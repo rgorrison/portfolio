@@ -1,2 +1,4 @@
-# portfolio
-An overview of my storytelling with visuals and words.
+# Welcome to a portfolio of my work
+
+Within this repository are some key examples of my communication via charts, graphs, maps, and writing for diverse audiences. 
+
