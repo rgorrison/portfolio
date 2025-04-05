@@ -1,10 +1,12 @@
 ![Running correlations and AMO](/assets/running_correlation.png) 
 
-This graph contains three layers of information:
+## Graph purpose
 
-  1) Running correlations for smoothed indices (&)
-  2) the amo index, where the positive
-  3) Red and blue indicating psotivie and negative
+This graph contains three layers of information meant to identify which variables are most closely correlated to stable oxygen isotope variability ($\delta^{18}O_{p}$) and possible contributions to those relationships. Confidence levels are indicated for the 95%-significance level (dashed lines) and 99%-significance level (dotted lines).The layers can be discretized as follows:
+
+  1) Running correlations for smoothed indices related to or impacting monsoon activity (where $\omega_{500}$ represents vertical motion in the atmosphere; $\delta^{18}O_{p}$ represnts stable oxygen isotopes in precipitation; N3.4 is an index of El Niño variability; and P is precipitation). 
+  2) The index of Atlantic Multidecadal Variability (AMO) is plotted to illustrate that during the positive phase of the AMO, the N3.4 correlation with $\delta^{18}O_{p}$ dips below significant levels, indicating a decoupling of that relationship.
+  3) Red and blue shading highlight positive and negative phases of the Interdecadal Pacific Oscillation, respectively.
 
 Below are selections of Python code for key analysis and plotting aspects of this project. 
 
@@ -78,7 +80,7 @@ d18_p_corr = d18_wam_mirend.rolling(31).corr(p_wam_mirend)
 n34_d18_corr = n34_mirend.rolling(31).corr(d18_wam_mirend)
 ```
 
-### Plotting
+## Plotting
 I utilize section headings and line breaks to increase legibility in complex plots: 
 ```
 # 31 yr running correlation of upstream, amount effects and the enso, amo link. 
