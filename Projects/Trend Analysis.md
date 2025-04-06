@@ -1,3 +1,5 @@
+# Calculating and plotting trends of an index representing local changes in large-scale circulation
+
 ![Proxy locations](/assets/HCE_trend.png)
 
 ## Figure purpose
