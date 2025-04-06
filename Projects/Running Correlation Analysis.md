@@ -1,4 +1,7 @@
-![Running correlations and AMO](/assets/running_correlation.png) 
+# Evaluting the time-evolution of dynamic relationships
+
+<img src="/assets/running_correlation.png" alt="Running correlations and AMO" width="800"/>
+
 
 ## Graph purpose
 
