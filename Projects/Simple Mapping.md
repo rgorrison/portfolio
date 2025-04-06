@@ -1,3 +1,4 @@
+# Mapping a database of paleoclimate records for preliminary analysis
 
 Paleoclimate Record Map            |  Close-up of South Atlantic Paleoclimate Records
 :-------------------------:|:-------------------------:
