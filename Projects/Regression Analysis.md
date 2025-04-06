@@ -1,4 +1,7 @@
-![HCI - latitude regression](/assets/hc_regression.png)
+# Evaluating the explained variance of regional atmospheric motion by latitude change
+
+<img src="/assets/hc_regression.png" alt="HCI - latitude regression" width="600"/>
+
 
 ## Figure purpose
 This figure shows the regression of an index for monsoon strength (measured in $\delta^{18}O_p$, per mil units) against the latitude of large-scale descent of atmospheric motion. 
