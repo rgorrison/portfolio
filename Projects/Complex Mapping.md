@@ -107,7 +107,6 @@ for i,(r,lat_val,lon_val) in enumerate(zip(recs_ipo,lat_pts_ipo, lon_pts_ipo)):
 ```
 
 # 2: Adding close-ups for information-dense regions
-
 ![Proxy locations with close up](/assets/proxy_locs_close.jpg)
 
 ## Figure purpose
