@@ -1,5 +1,5 @@
 # Evaluating the explained variance of regional atmospheric motion by latitude change
-|Python|Statistics (Regression analysis)|
+|Python (NumPy)|statistics (regression analysis)|
 |-|-|
 
 <img src="/assets/hc_regression.png" alt="HCI - latitude regression" width="500"/>
