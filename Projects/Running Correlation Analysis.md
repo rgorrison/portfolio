@@ -7,11 +7,13 @@
 
 ## Graph purpose
 
-This graph contains three layers of information meant to identify which variables are most closely correlated to stable oxygen isotope variability ($\delta^{18}O_{p}$) and possible contributions to those relationships. Confidence levels are indicated for the 95%-significance level (dashed lines) and 99%-significance level (dotted lines).The layers can be discretized as follows:
+This graph contains three layers of information that identify which variables are most closely correlated to stable oxygen isotope variability ($\delta^{18}O_{p}$) and how those physical relationships change over time. Presenting the data together on the same figure allows for a concise, comparative discussion. The layers can be discretized as follows:
 
   1) Running correlations for smoothed indices related to or impacting monsoon activity (where $\omega_{500}$ represents vertical motion in the atmosphere; $\delta^{18}O_{p}$ represnts stable oxygen isotopes in precipitation; N3.4 is an index of El Niño variability; and P is precipitation). 
   2) The index of Atlantic Multidecadal Variability (AMO) is plotted to illustrate that during the positive phase of the AMO, the N3.4 correlation with $\delta^{18}O_{p}$ dips below significant levels, indicating a decoupling of that relationship.
   3) Red and blue shading highlight positive and negative phases of the Interdecadal Pacific Oscillation, respectively.
+
+Confidence levels are indicated on the figure for the 95%-significance level (dashed lines) and 99%-significance level (dotted lines).
 
 Below are selections of Python code for key analysis and plotting aspects of this project. 
 
