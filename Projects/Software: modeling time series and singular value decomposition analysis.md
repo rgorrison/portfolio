@@ -1,4 +1,6 @@
 # An ensemble approach to extracting shared variability from a database
+|Python (NumPy, Pandas)| iterative modeling| statistics (linear interpolation) | data manuplication of flat files (.csv)|
+|-|-|-|-| 
 
 ## Analysis overview
 The goal of this project was to design a piece of software arrive at an understanding of dominant modes of variability of the South American Summer Monsoon. This was done using a principle component analysis to isolate the variability shared by a database of discrete records and construct a new set of maps and time series to illustrate the common patterns (spatial and temporal). 
@@ -25,14 +27,13 @@ Ultimately, this results in 1,000 networks of paleoclimate records from which th
 Data are loaded after pre-processing and contain a uniform structure and file naming convention.
 ```
 records = {}
-pathi = "/network/rit/home/ro553136/orrison/data/proxy/mceof_recs/"
+pathi = "../mceof_recs/"
 for file in os.listdir(pathi):
     if file.endswith('_ages.txt'):
         rec = os.path.splitext(file)[0].split('_')[0]
         records[rec] = pd.read_csv(os.path.join(pathi, file), sep='\t')
                 
 records_dat = {}
-pathi = "/network/rit/home/ro553136/orrison/data/proxy/mceof_recs/"
 
 for file in os.listdir(pathi):
     if file.endswith('_d18O.txt'):
