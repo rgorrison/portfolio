@@ -4,7 +4,7 @@
 
 Paleoclimate Record Map            |  Close-up of South Atlantic Paleoclimate Records
 :-------------------------:|:-------------------------:
-![Proxy locations](/assets/RecAvail_SAm_15ka3ka.png)   |  ![Proxy locations](/assets/RecAvail_SAtl_15ka3ka.png)
+<img src="/assets/RecAvail_SAm_15ka3ka.png" alt="proxy locations" width="400"/> | <img src="/assets/RecAvail_SAtl_15ka3ka.png" alt="proxy locations" width="400"/>
 
 ## Figure purpose
 
