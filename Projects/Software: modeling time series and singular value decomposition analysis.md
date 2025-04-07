@@ -92,11 +92,12 @@ for rec in mceof_recs:
 ```
 
 ### 2. Resample uncertainty to generate ensemble(s) of age models
+This complex code contains many print statements and comments mixed within the make sure it executes correctly.
+```
 #----------
 # Age ties and d18O sample interpolation --> annually spaced 18O time series
 #----------   
-This complex code contains many print statements and comments mixed within the make sure it executes correctly.
-```
+
 for j in range(size):
 #     print('AGE MODEL RESAMPLING FOR ENS MEM ' + str(j))
     for rec in records:
