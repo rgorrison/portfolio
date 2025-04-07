@@ -1,4 +1,6 @@
 # Calculating and plotting trends of an index representing local changes in large-scale circulation
+|Python (NumPy)| statistics (regression analysis)
+|-|-|
 
 ![Proxy locations](/assets/HCE_trend.png)
 
@@ -52,5 +54,5 @@ plt.xlim(1920,2100)
 print('\n p (1920 -- 2000) = ' +'{0:.{1}f}'.format(res_hist.pvalue, 3))
 print('\n p (2000 -- 2098) < 0.001') # pval = 4.823216692486791e-06
 plt.tight_layout()
-plt.savefig('/network/rit/lab/vuillelab_rit/orrison/Plots/hadcell/trends/Fig3d_HC_ext_1920_2098_flip.png',dpi=300,facecolor='w')
+plt.savefig('../Fig3d_HC_ext_1920_2098_flip.png',dpi=300,facecolor='w')
 ```
