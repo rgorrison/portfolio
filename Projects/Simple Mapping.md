@@ -1,4 +1,6 @@
 # Mapping a database of paleoclimate records for preliminary analysis
+|Python | data management|
+|-|-|
 
 Paleoclimate Record Map            |  Close-up of South Atlantic Paleoclimate Records
 :-------------------------:|:-------------------------:
@@ -6,7 +8,7 @@ Paleoclimate Record Map            |  Close-up of South Atlantic Paleoclimate Re
 
 ## Figure purpose
 
-The goal of this set of figures was to illustrate the geographic dispersion of paleoclimate records for the Holocene (approximately 15,000 years before present until today) to strategize about how to approach a new collaborative study. This early figure was not intended for publication, but rather to enable and propel a brainstorming disucssion. 
+The goal of this set of figures was to illustrate the geographic dispersion of paleoclimate records for the Holocene (approximately 15,000 years before present until today) to strategize about how to approach a new collaborative study. This early figure was not intended for publication, but rather to enable and propel a brainstorming discussion. 
 
 These simple maps show a diverse network of sites from which paleoclimate records have been generated. This figure uses two layers: first, distinct symbols illustrate the source from which information is derived (bogs, speleothems (caves), corals, ice cores, lake cores, salt flats, and ocean cores); and second, the time period available for each record is illustrated using black (for long records) and green (for shorter records).
 
@@ -159,7 +161,7 @@ axs.set_ylabel('Latitude')
 axs.set_xlabel('Longitude')
 # axs.legend.set_facecolor('white')
 
-fig.savefig('/network/rit/lab/vuillelab_rit/orrison/Plots/explor/RecAvail_SAm_15ka3ka.png', facecolor='w')
+fig.savefig('../RecAvail_SAm_15ka3ka.png', facecolor='w')
 plt.show()
 ```
 
