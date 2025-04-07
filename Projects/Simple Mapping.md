@@ -8,11 +8,11 @@ Paleoclimate Record Map            |  Close-up of South Atlantic Paleoclimate Re
 
 ## Figure purpose
 
-The goal of this set of figures was to illustrate the geographic dispersion of paleoclimate records for the Holocene (approximately 15,000 years before present until today) to strategize about how to approach a new collaborative study. This early figure was not intended for publication, but rather to enable and propel a brainstorming discussion. 
+The goal of these figures was to illustrate the geographic dispersion of paleoclimate records containing data during the Holocene (approximately 15,000 years before present until today) to outline an approach to collaborative study. This preliminary figure was not intended for publication, but rather to ground and propel forward a strategic discussion. 
 
-These simple maps show a diverse network of sites from which paleoclimate records have been generated. This figure uses two layers: first, distinct symbols illustrate the source from which information is derived (bogs, speleothems (caves), corals, ice cores, lake cores, salt flats, and ocean cores); and second, the time period available for each record is illustrated using black (for long records) and green (for shorter records).
+These simple maps shows a diverse network of sites from which paleoclimate records have been generated. This figure uses two layers: first, distinct symbols illustrate the source from which information is derived (bogs, speleothems (caves), corals, ice cores, lake cores, salt flats, and ocean cores); and second, the time period available for each record is parsed using distinct colors (black for long records and green for shorter records).
 
-The close-up figure on the right hand side helps to parse the region of the Southwest Atlantic where there is a high density of records available.  
+The close-up figure on the right hand side helps to parse the region of the South Atlantic where there is a high density of records available.  
 
 ## Database hard coding
 Each record is hardcoded based on type and within each type based on label, latitude, and longitude. Below is the code for the Record Map.
