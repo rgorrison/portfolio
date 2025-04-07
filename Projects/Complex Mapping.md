@@ -1,6 +1,6 @@
 # Generating multi-layered maps to crystalize a complicated spatial story
 
-| Python | data cleaning | 
+| Python (Xarray) | data cleaning | 
 |-|-|
 
 Here I will illustrate two examples of multi-layered spatial storytelling. These images provide context for scientific investigations that seek to understand how networks of paleoclimate records document variability of key variables within an averaged background climate state including rainfall, wind patterns, and key dynamic features of the landscape. Presenting these multi-factored entities together well as a comprehensive visual is critical to setting the stage for further analysis.  
