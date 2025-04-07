@@ -1,4 +1,6 @@
 # Curating an interactive Google Map for a weekend dance festival
+| Google My Maps | 
+| - |
 
 Violetas Tango Weekend brought 150 guests to Albany, NY in the spring of 2023. In order to make their visit comfortable and convenient, the below map was curated to help the guests plan their weekend.
 
