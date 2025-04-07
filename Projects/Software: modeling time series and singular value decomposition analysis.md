@@ -20,13 +20,152 @@ The oxygen isotope time series for each record is interpolated to each of the ti
 
 Ultimately, this results in 1,000 networks of paleoclimate records from which the principle components of shared variability are extracted. Below are selection of the model code. The full code can be found at this [Zenodo archive](https://zenodo.org/records/6949234).
 
-## Modeling code
+## Selected modeling code
 ### 1. Select appropriate isotopic records and identify age tie uncertainty
+Data are loaded after pre-processing and contain a uniform structure and file naming convention.
 ```
+records = {}
+pathi = "/network/rit/home/ro553136/orrison/data/proxy/mceof_recs/"
+for file in os.listdir(pathi):
+    if file.endswith('_ages.txt'):
+        rec = os.path.splitext(file)[0].split('_')[0]
+        records[rec] = pd.read_csv(os.path.join(pathi, file), sep='\t')
+                
+records_dat = {}
+pathi = "/network/rit/home/ro553136/orrison/data/proxy/mceof_recs/"
+
+for file in os.listdir(pathi):
+    if file.endswith('_d18O.txt'):
+        rec = os.path.splitext(file)[0].split('_')[0]
+        records_dat[rec] = pd.read_csv(os.path.join(pathi, file), sep='\t')
+```
+
+A framework is established to contain finalized data
+```
+#----------
+# Pre-define arrays for data storage
+#----------
+age_mod_mc = {}
+f_mc = {}
+xnew = {}
+x = {}
+xnew_ages = {}
+annages = {}
+d18O_resamp = {}
+d18O_comm = {}
+d18O_comm_smth30 = {}
+d18O_comm_smth10 = {}
+rec_ages_list = []
+y_list = []
+
+#----------
+# Framework for data analysis
+#----------
+for rec in records: 
+        age_mod_mc[rec] = [[0.0 for i in range(len(records[rec]['tie_year_CE']))] for j in range(size)]
+        xnew[rec] = np.linspace(np.min(records[rec]['tie_depth_mm']), np.max(records[rec]['tie_depth_mm']), np.max(records[rec]['tie_year_CE'])-np.min(records[rec]['tie_year_CE']))
+        f_mc[rec] = [[0.0 for i in range(len(xnew[rec]))] for j in range(size)]
+        x[rec] =  records[rec]['tie_depth_mm']
+        xnew_ages[rec] = []
+        d18O_resamp[rec] = [[None for i in range(len(xnew_ages[rec]))] for j in range(size)]    
+        d18O_comm[rec] = [[None for i in range(len(ages_comm))] for j in range(size)] 
+        d18O_comm_smth30[rec] = [[None for i in range(len(ages_comm))] for j in range(size)] 
+        d18O_comm_smth10[rec] = [[None for i in range(len(ages_comm))] for j in range(size)] 
+
+#----------
+# Framework for records from merged samples and samples without an age model
+#----------
+newrecs = ['PUM12', 'SBE3' , 'QUELC3', 'JAR', 'PAR', 'SBE+SMT', 'PAL', 'BOTO', 'ALH', 'MV', 'PIM4']
+for nrec in newrecs:
+    xnew_ages.update({nrec : []})
+    d18O_resamp.update({nrec : [[None for i in range(len(xnew_ages[rec]))] for j in range(size)] })
+    d18O_comm.update({nrec : [[None for i in range(len(ages_comm))] for j in range(size)] })
+    d18O_comm_smth10.update({nrec : [[None for i in range(up_bnd - lw_bnd)] for j in range(size)] })
+    d18O_comm_smth30.update({nrec : [[None for i in range(up_bnd - lw_bnd)] for j in range(size)] })
+    
+#----------
+# Framework for final records 
+#----------  
+for rec in mceof_recs:
+       annages[rec] = []
+```
+
+### 2. Resample uncertainty to generate ensemble(s) of age models
+#----------
+# Age ties and d18O sample interpolation --> annually spaced 18O time series
+#----------   
+This complex code contains many print statements and comments mixed within the make sure it executes correctly.
+```
+for j in range(size):
+#     print('AGE MODEL RESAMPLING FOR ENS MEM ' + str(j))
+    for rec in records:
+        bol_flag = [False]*(len(records[rec]['tie_year_CE']))
+            # resample age ties, make sure they don't violate superposition assumption
+        for i in range(len(records[rec]['tie_year_CE'])):
+    #             print('AGE TIE (#/total):')
+    #             print(i, len(records[rec]['tie_year_CE']))
+            while not bol_flag[i]:
+                if i != len(records[rec]['tie_year_CE'])-1:
+                    # generate new age tie resamples based on uncertainties in one of three ways: 
+                    # check if second age tie violates superposition assump of the first age tie based on lower bounds
+                    #if j is last age tie, don't do the below step.  indent the below.  
+                    tie_min_diff = (records[rec]['tie_year_CE'][i]-records[rec]['err_2sig'][i]/2) - (records[rec]['tie_year_CE'][i+1]-records[rec]['err_2sig'][i+1]/2)
+                    tie_max_diff = (records[rec]['tie_year_CE'][i]+records[rec]['err_2sig'][i]/2) - (records[rec]['tie_year_CE'][i+1]+records[rec]['err_2sig'][i+1]/2)
+                    if tie_min_diff < 0:
+                # generate truncated normal distribution of current age tie based on next one
+                        lower = (records[rec]['tie_year_CE'][i+1]-records[rec]['err_2sig'][i+1]/2)+1
+                        upper = records[rec]['tie_year_CE'][i]+records[rec]['err_2sig'][i]/2
+                        mu = records[rec]['tie_year_CE'][i]
+                        sigma = records[rec]['err_2sig'][i]/8
+                        age_mod_mc[rec][j][i] = float(scipy.stats.truncnorm.rvs((lower-mu)/sigma,(upper-mu)/sigma,loc=mu,scale=sigma,size=1))
+                    elif tie_max_diff < 0:
+                # generate truncated normal distribution of next age tie based on current one. 
+                        lower = records[rec]['tie_year_CE'][i]-records[rec]['err_2sig'][i]/2
+                        upper = (records[rec]['tie_year_CE'][i]+records[rec]['err_2sig'][i]/2)+1
+                        mu = records[rec]['tie_year_CE'][i]
+                        sigma = records[rec]['err_2sig'][i]/8
+                        age_mod_mc[rec][j][i] = float(scipy.stats.truncnorm.rvs((lower-mu)/sigma,(upper-mu)/sigma,loc=mu,scale=sigma,size=1))
+                    else:
+                        age_mod_mc[rec][j][i] = float(np.random.normal(loc=records[rec]['tie_year_CE'][i], scale=(records[rec]['err_2sig'][i]/8), size = 1))
+                else:
+                    age_mod_mc[rec][j][i] = float(np.random.normal(loc=records[rec]['tie_year_CE'][i], scale=(records[rec]['err_2sig'][i]/8), size = 1))
+    #                 print()
+    #                 print('age tie year +/- 1 sig uncertainty is')
+    #                 print(records[rec]['tie_year_CE'][i], (records[rec]['err_2sig'][i]/2))
+    #                 print('age tie resamp value is')
+    #                 print(age_mod_mc[rec][j][i])
+    #                 print('previous age tie value is')
+    #                 print(age_mod_mc[rec][j][i-1])
+    #                 print(np.shape(age_mod_mc[rec]))
+    #                 print()
+                if i == 0:
+                    bol_flag[0] = True
+    #                     print(bol_flag)
+                elif i == len(records[rec]['tie_year_CE'])-1:
+                    bol_flag[-1] = True
+    #                     print(bol_flag)
+                else: 
+                    if (age_mod_mc[rec][j][i] - age_mod_mc[rec][j][i-1]) < -2: # verify sufficient separation of age ties
+                        bol_flag[i] = True
+    #                         print(bol_flag)
+                    else:
+                        print('resample age tie')
+                        print(rec)
+
+#                print('FINISHED AN AGE MODEL!')
+```
+
+### 3. Interpolate isotopic time series samples to generate record ensembles
+The below code is within the same loop as the age tie resampling - the isotopic records are interpolated for each age chronology ensemble member.
+```
+        ### Generate function to calculate one age per isotopic sample depth
+        ### new interpolated ages based on sampled depths and MC-derived age model
+        f = interpolate.interp1d(records[rec]['tie_depth_mm'], age_mod_mc[rec][j][:], fill_value = "extrapolate")       
+        xnew_ages[rec].append(np.array(f(records_dat[rec]['oxy_depth_mm'])))
 
 ```
 
 ## Plotting results 
-The below figure captures the two dominant modes of variability. These maps and time series illustrate the shared patterns (spatial and temporal) of the databse of paleoclimate records, accounting for time uncertainty in their original measurements.
+The below figure captures the two dominant modes of variability. These maps and time series illustrate the shared patterns (spatial and temporal) of the databse of paleoclimate records, accounting for time uncertainty in their original measurements. The percent of explained variance of the total network is indicated in the upper righthand corner of each row. 
 
 ![MCEOF modes 1 and 2](/assets/mceof12.png)
