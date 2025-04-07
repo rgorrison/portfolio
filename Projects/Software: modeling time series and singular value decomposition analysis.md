@@ -1,5 +1,5 @@
 # An ensemble approach to extracting shared variability from a database
-|Python (NumPy, Pandas)| iterative modeling| statistics (linear interpolation) | data manuplication of flat files (.csv)|
+|Python (NumPy, Pandas)| iterative modeling| statistics (linear interpolation) | data manipulation of flat files (.csv)|
 |-|-|-|-| 
 
 ## Analysis overview
