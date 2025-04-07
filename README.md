@@ -1,5 +1,5 @@
 # Welcome to a portfolio of my work
 
-Within this repository are some key examples of my communication for diverse audiences via written communications and data analysis and presentation via charts, graphs, and maps. Additionally is a statement regarding my view on the open-access paradigm of science and the importance of ethical scientific work. 
+Within this repository are some key projects examples of deliverables for diverse audiences: written communications and data analysis presented via charts, graphs, and maps. Also enclosed is my personal statement regarding the open-access paradigm of science and the importance of ethical reflection in scientific work. 
 
-Thank you for visiting, and please reach out to me if you have any questions at rgorrison@gmail.com
+Thank you for visiting, and please reach out to me if you have any questions at rgorrison[@]gmail.com
