@@ -1,5 +1,5 @@
 # Calculating the relationship between Pacific Ocean variabiity and South American rainfall with correlation analysis
-| Python (Xarray, NumPy) | statistics (corrleation analysis, regression analysis) |
+| Python (NumPy, Xarray) | statistics (corrleation analysis, regression analysis) |
 | - | - |
 
 ![Correlations between Pacific modes and precipitation](/assets/pacific_precip_corr.png)
