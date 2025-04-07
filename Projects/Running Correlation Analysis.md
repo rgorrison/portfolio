@@ -1,4 +1,6 @@
 # Evaluting the time-evolution of dynamic relationships
+| Python (Pandas) | Statistics (time series analysis, correlation analysis)|
+|-|-|
 
 <img src="/assets/running_correlation.png" alt="Running correlations and AMO" width="800"/>
 
