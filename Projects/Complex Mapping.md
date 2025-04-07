@@ -1,5 +1,8 @@
 # Generating multi-layered maps to crystalize a complicated spatial story
 
+| Python | data cleaning | 
+|-|-|
+
 Here I will illustrate two examples of multi-layered spatial storytelling. These images provide context for scientific investigations that seek to understand how networks of paleoclimate records document variability of key variables within an averaged background climate state including rainfall, wind patterns, and key dynamic features of the landscape. Presenting these multi-factored entities together well as a comprehensive visual is critical to setting the stage for further analysis.  
 
 These figures concisely illustrate multiple layers of information, doing so using *color-blind accesible* color schemes and careful key selection. 
@@ -13,7 +16,7 @@ This map shows the locations of two databases of paleoclimate records: one datas
 ## Database cleaning
 The IAEA stations (also called GNIP stations) used in this analysis had to meet certain criteria: have more than seven discrete years of observations, have at least three years of data in each phase (positive and negative) of the IPO, and the data outliers that were non-realistic data points needed to be removed. The below code illustrates how the raw data was cleaned, organized, and ultimately filtered for inclusion in the above figure. 
 ```
-pth_gnip = '/network/rit/home/ro553136/orrison/data/observations/gnip/'
+pth_gnip = '../gnip/'
 f_gnip = 'Wiser_SAm_djf_pwt.nc'
 wiser_djf_all = xr.open_dataset(pth_gnip + f_gnip)
 wiser_djf_yrsrt = wiser_djf_all.sortby(wiser_djf_all.time)
