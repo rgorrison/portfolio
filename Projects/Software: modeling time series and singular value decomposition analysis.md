@@ -22,6 +22,9 @@ Ultimately, this results in 1,000 networks of paleoclimate records from which th
 
 ## Modeling code
 ### 1. Select appropriate isotopic records and identify age tie uncertainty
+```
+
+```
 
 ## Plotting results 
 The below figure captures the two dominant modes of variability. These maps and time series illustrate the shared patterns (spatial and temporal) of the databse of paleoclimate records, accounting for time uncertainty in their original measurements.
